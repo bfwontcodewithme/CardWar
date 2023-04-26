@@ -2,18 +2,10 @@
 
 namespace ariel{
     class Game {
-        Player p1;
-        Player p2;
 
         public:
-
-            void playTurn(){};
-            void printLastTurn(){};
-            void playAll(){};
-            void printWiner(){};
-            void printLog(){};
-            void printStats(){};
-
+            Player p1;
+            Player p2;
 
             //constructors
             Game(Player player1, Player player2){
@@ -24,6 +16,13 @@ namespace ariel{
                 p1 = Player();
                 p2 = Player();
             }
-            
+
+            void playTurn(){};
+            void printLastTurn(){};
+            void playAll(){};
+            void printWiner(){};
+            void printLog(){};
+            void printStats(){};
+ 
     };
 }

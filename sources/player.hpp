@@ -2,13 +2,9 @@
 
 namespace ariel{
     class Player {
-        std::string name;
-
         public:
-
-            int stacksize() { return 0; }
-            int cardesTaken(){ return 0; }
-
+            std::string name;
+            
             //constructors
             Player(std::string player_name){
                 name = player_name;
@@ -16,6 +12,9 @@ namespace ariel{
             Player(){
                 name = "John";
             }
+
+            int stacksize() { return 0; }
+            int cardesTaken(){ return 0; }
 
     };
 }

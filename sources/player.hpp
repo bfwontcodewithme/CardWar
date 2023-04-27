@@ -1,5 +1,7 @@
+#ifndef PLAYER_HPP
+#define PLAYER_HPP
 #include <iostream>
-
+#include "card.hpp"
 namespace ariel{
     class Player {
         
@@ -17,10 +19,11 @@ namespace ariel{
             std::string getPlayer(){return name;}
 
             //prints the amount of cards left
-            int stacksize(){return stack;}
+            int stacksize(){return stack_left;}
 
             // prints the amount of cards this player has won.
             int cardesTaken(){return cards_taken;}
-            std::string playerMove(){};
+            std::string playerMove(Card d);
     };
 }
+#endif

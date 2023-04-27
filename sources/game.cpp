@@ -21,15 +21,15 @@ void ariel::Game::playTurn(){
     //add cards to winner
     //loser lost cards
     if(p1.name == p2.name) throw std::string{"\nMissing player 2\n"};
-    if(isFinished()) throw std::string {"\nGame Finished\n"}
-    int index = 0;
+    if(isFinished()) throw std::string{"\nGame Finished\n"};
+    unsigned int index = 0;
     int max_draw = 0;
     int curr_turn = getTurn() +1;
     int res = playCards(index, log_last);
      //result of p1
     while(res == 0 &&  curr_turn<26){
         //draw
-        log_last += "Draw.\n" 
+        log_last += "Draw.\n";
         draw_counter += 1;
         curr_draw_counter += 1;
         index += 1;
@@ -44,7 +44,7 @@ void ariel::Game::playTurn(){
         max_draw = max_draw > curr_draw_counter ? max_draw : curr_draw_counter; 
         curr_draw_counter = 0;
         index += 1;
-        log_last += p2.getPlayer + " wins.";
+        log_last += p2.getPlayer() + " wins.";
         turn_counter +=  1;
         p2_win += 1;
     }
@@ -55,7 +55,7 @@ void ariel::Game::playTurn(){
         max_draw = max_draw > curr_draw_counter ? max_draw : curr_draw_counter; 
         curr_draw_counter=0;
         index += 1;
-        log_last += p1.getPlayer +" wins."
+        log_last += p1.getPlayer() +" wins.";
         turn_counter += 1;
         p1_win += 1;
     }
@@ -65,10 +65,10 @@ void ariel::Game::playTurn(){
     game_log += log_last + "\n";
     
 };
-int ariel::Game::playCards(int turn, std::string log_last){
-    log_last += p1.playerMove(Game::deck.at(turn));
-    log_last += p2.playerMove(Game::deck.at(turn + 26));
-    int res = Card::compareCards(Game::deck.at(turn), Game::deck.at(turn + 26));
+int ariel::Game::playCards(unsigned int turn, std::string &log_last){
+    log_last += p1.playerMove(deck.at(turn));
+    log_last += p2.playerMove(deck.at(turn + 26));
+    int res = deck.at((turn)).compareCards(deck.at(turn + 26));
     return res;
 }
 /*
@@ -83,13 +83,20 @@ void ariel::Game::printLastTurn(){
 };
 /*calling the play turn until isFinished is true */
 void ariel::Game::playAll(){
-    do(){
+    do{
         Game::playTurn();
     }while(!isFinished());
 };
 
 void ariel::Game::printWiner(){
-
+    if(isFinished()){
+        std::string winner = "";
+        if(p1.cardesTaken() == p2.cardesTaken()) std::cout << "It's a tie.\n";
+        else if(p1.cardesTaken() > p2.cardesTaken()) winner += p1.getPlayer();
+        else winner += p2.getPlayer();
+        std::cout << winner << " won.";
+    }
+    
 };
 
 /*prints all the turns played one line per turn (same format as game.printLastTurn())*/
@@ -102,5 +109,5 @@ void ariel::Game::printStats(){
     std::cout << draw_counter <<" draws.\n";
     std::cout << max_draw << " draws in one turn\n";
     std::cout << "Game ended after " << turn_counter << " turn.\n";
-    std::cout << 
-}
+
+};

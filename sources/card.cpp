@@ -21,10 +21,10 @@ std::vector<Card> ariel::Card::buildDeck(){
 };
 
 /*return string of the card ___(rank) of ___(suit)*/
-std::string ariel::Card::cardString(Card d)
+std::string ariel::Card::cardString()
 {
     std::string str = "";
-    switch (d.getRank())
+    switch (this->getRank())
     {
     case ACE:
         str += "Ace";
@@ -39,11 +39,11 @@ std::string ariel::Card::cardString(Card d)
         str += "Jack";
         break;
     default:
-        str += std::to_string(d.getRank());
+        str += std::to_string(this->getRank());
         break;
     }
     str += "of";
-    switch (d.getSuit())
+    switch (this->getSuit())
     {
     case CLUBS:
         str += "Clubs";
@@ -61,20 +61,20 @@ std::string ariel::Card::cardString(Card d)
     return str;
 }
 
-int ariel::Card::compareCards(Card d1, Card d2) //win or lose defined by p1
+int ariel::Card::compareCards(Card d) //win or lose defined by p1
 {
     // p1 have ace
-    if(d1.getRank() == 1){
-        if(d2.getRank() == 2){return -1;}       //lose to 2
-        else if(d1.getRank() == 1){return 0;}   //draw if equal
+    if(this->getRank() == 1){
+        if(d.getRank() == 2){return -1;}       //lose to 2
+        else if(d.getRank() == 1){return 0;}   //draw if equal
         else return 1;                          //anything else ace is winner
     }
-    else if(d1.getRank() == 2){                 
-        if(d2.getRank() == 1){return 1;}        //is p1 has 2 and p1 ace, it's a win
-        else if(d2.getRank() == 2){return 0;}   //draw if equal
+    else if(this->getRank() == 2){                 
+        if(d.getRank() == 1){return 1;}        //is p1 has 2 and p1 ace, it's a win
+        else if(d.getRank() == 2){return 0;}   //draw if equal
         else return -1;                         //anything else 2 is smaller and it's a lose
     }
-    else if(d1.getRank() == d2.getRank()){return 0;}    //any other number if draw
-    else return d1.getRank() > d2.getRank() ? 1 : -1;   //any other number if not draw, if true it's a win
+    else if(this->getRank() == d.getRank()){return 0;}    //any other number if draw
+    else return this->getRank() > d.getRank() ? 1 : -1;   //any other number if not draw, if true it's a win
 }
 

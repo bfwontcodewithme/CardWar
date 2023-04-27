@@ -1,3 +1,5 @@
+#ifndef CARD_HPP
+#define CARD_HPP
 #include <iostream>
 #include <vector>
 
@@ -23,12 +25,13 @@ namespace ariel{
                 suit = (Suit)s;
                 
             };
-            int getRank(){ return rank; }
-            int getSuit(){ return suit; }
+            int getRank() const { return rank; }
+            int getSuit() const { return suit; }
             static std::vector<Card> buildDeck();   //inside building it's shuffling
-            std::string cardString(Card d);
-            int compareCards(Card d1, Card d2);
+            std::string cardString();
+            int compareCards(Card d);
 
     };
 }
 
+#endif

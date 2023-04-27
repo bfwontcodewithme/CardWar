@@ -4,13 +4,3 @@
 #include "player.hpp"
 using namespace ariel;
 
-
-int stacksize() {
-    return 0; 
-     
-}
-
-int cardesTaken(){
-    return 0; 
-
-}

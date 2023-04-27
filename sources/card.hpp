@@ -16,10 +16,11 @@ namespace ariel{
             Card(Suit s, Rank r){
                 rank = r;
                 suit = s;
+                
             };
             void buildDeck();
             void shuffleDeck();
-            void swapCards();
+
 
 
     

@@ -5,26 +5,30 @@ enum Suit {CLUBS, DIAMONDS, HEARTS, SPADES};
 
 enum Rank {ACE = 1, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING };
 
+enum result {Lost = -1, Draw, Win};
+/*
+    card contain rank and suit
+    card class contain all action on cards
+*/
+
 namespace ariel{
     class Card {
-    
-        public:
+        private:
             Rank rank;
             Suit suit;
+        public:
 
-            Card();
             Card(Suit s, Rank r){
-                rank = r;
-                suit = s;
+                rank = (Rank)r;
+                suit = (Suit)s;
                 
             };
-            void buildDeck();
-            void shuffleDeck();
+            int getRank(){ return rank; }
+            int getSuit(){ return suit; }
+            static std::vector<Card> buildDeck();   //inside building it's shuffling
+            std::string cardString(Card d);
+            int compareCards(Card d1, Card d2);
 
-
-
-    
     };
 }
 
-// card is a vector (rank, suit, owner, turn,..turn2, t3...)

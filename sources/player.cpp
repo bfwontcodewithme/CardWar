@@ -5,3 +5,11 @@
 using namespace ariel;
 
 
+std::string ariel::Player::playerMove(Card d){
+    std::string str = "";
+    str += this->getPlayer();
+    str += " played ";
+    str += d.cardString();
+    str += ". ";
+    return str;
+}

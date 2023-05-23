@@ -61,20 +61,20 @@ std::string ariel::Card::cardString()
     return str;
 }
 
-int ariel::Card::compareCards(Card d) //win or lose defined by p1
+int ariel::Card::compareCards(Card other) //win or lose defined by p1
 {
     // p1 have ace
     if(this->getRank() == 1){
-        if(d.getRank() == 2){return -1;}       //lose to 2
-        else if(d.getRank() == 1){return 0;}   //draw if equal
+        if(other.getRank() == 2){return -1;}       //lose to 2
+        else if(other.getRank() == 1){return 0;}   //draw if equal
         else return 1;                          //anything else ace is winner
     }
     else if(this->getRank() == 2){                 
-        if(d.getRank() == 1){return 1;}        //is p1 has 2 and p1 ace, it's a win
-        else if(d.getRank() == 2){return 0;}   //draw if equal
+        if(other.getRank() == 1){return 1;}        //is p1 has 2 and p1 ace, it's a win
+        else if(other.getRank() == 2){return 0;}   //draw if equal
         else return -1;                         //anything else 2 is smaller and it's a lose
     }
-    else if(this->getRank() == d.getRank()){return 0;}    //any other number if draw
-    else return this->getRank() > d.getRank() ? 1 : -1;   //any other number if not draw, if true it's a win
+    else if(this->getRank() == other.getRank()){return 0;}    //any other number if draw
+    else return this->getRank() > other.getRank() ? 1 : -1;   //any other number if not draw, if true it's a win
 }
 

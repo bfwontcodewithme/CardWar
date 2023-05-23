@@ -7,23 +7,19 @@ namespace ariel{
         
         public:
             std::string name;
-            int stack_left;
-            int cards_taken;
+            int stack_left = 0;
+            int cards_taken = 0;
             //constructors
-            Player(std::string player_name){
-                this->name = player_name;
-                this->stack_left = 0;
-                this->cards_taken = 0;
-            };
+            Player(std::string player_name): name(std::move(player_name)){};
 
-            std::string getPlayer(){return name;}
+            std::string getPlayer() const {return name;}
 
             //prints the amount of cards left
-            int stacksize(){return stack_left;}
+            int stacksize() const {return stack_left;}
 
             // prints the amount of cards this player has won.
-            int cardesTaken(){return cards_taken;}
-            std::string playerMove(Card d);
+            int cardesTaken() const {return cards_taken;}
+            std::string playerMove(Card other);
     };
 }
 #endif

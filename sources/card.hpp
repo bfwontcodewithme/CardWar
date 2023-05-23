@@ -20,16 +20,12 @@ namespace ariel{
             Suit suit;
         public:
 
-            Card(Suit s, Rank r){
-                rank = (Rank)r;
-                suit = (Suit)s;
-                
-            };
+            Card(Suit sui, Rank ran): rank((Rank)ran), suit((Suit)sui){};
             int getRank() const { return rank; }
             int getSuit() const { return suit; }
             static std::vector<Card> buildDeck();   //inside building it's shuffling
             std::string cardString();
-            int compareCards(Card d);
+            int compareCards(Card other);
 
     };
 }

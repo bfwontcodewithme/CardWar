@@ -19,12 +19,12 @@ namespace ariel{
             std::vector<Card> deck;
             std::string game_log;
             std::string log_last;
-            int draw_counter;
-            int curr_draw_counter;
-            int turn_counter;
-            int max_draw;
-            int p1_win;
-            int p2_win;
+            int draw_counter = 0;
+            int curr_draw_counter = 0;
+            int turn_counter = 0;
+            int max_draw = 0;
+            int p1_win = 0;
+            int p2_win = 0;
             //constructors
             Game(Player &player1, Player &player2):p1(player1), p2(player2)
             {
@@ -33,16 +33,10 @@ namespace ariel{
                 p2.stack_left = START_STACK;
                 p1.cards_taken = 0;
                 p2.cards_taken = 0;
-                p1_win = 0;
-                p2_win = 0;
-                game_log = "";
-                draw_counter = 0;
-                turn_counter = 0;
-                curr_draw_counter = 0;
             };
-            int getTurn(){return turn_counter;}
-            bool isFinished(){return (p1.stacksize() == 0 && p2.stacksize() ==0);}
-            int playCards(unsigned int t, std::string &str);
+            int getTurn() const {return turn_counter;}
+            bool isFinished() const {return (p1.stacksize() == 0 && p2.stacksize() ==0);}
+            int playCards(unsigned int turn, std::string &str);
             void playTurn();
             void printLastTurn();
             void playAll();
